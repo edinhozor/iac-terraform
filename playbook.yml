@@ -13,3 +13,14 @@
       name:
         - django
         - djangorestframework
+  - name: Entering the directory of venv and starting our django project.
+    shell: '. /home/ubuntu/files/venv/bin/activate; django-admin startproject setup /home/ubuntu/files'
+    ignore_errors: yes
+  - name: Changing the hosts inside django settings.
+    lineinfile:
+      path: /home/ubuntu/files/setup/settings.py
+      regexp: 'ALLOWED_HOSTS'
+      line: 'ALLOWED_HOSTS = ["*"]'
+      backrefs: yes
+  - name: Running the server.
+    shell: 'cd /home/ubuntu/files; . venv/bin/activate; nohup python manage.py runserver 0.0.0.0:8000 &'
