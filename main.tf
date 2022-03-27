@@ -23,7 +23,7 @@ resource "aws_instance" "app_server" {
     #    nohup busybox httpd -f -p 8080 &
     #    EOF
     tags = {
-        Name = "Ubuntu - First Instance"
+        Name = "TF Ansible Python"
     }
     key_name = "iac-alura"
 }
